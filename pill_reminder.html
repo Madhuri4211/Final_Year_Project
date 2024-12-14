@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pill Reminder</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f8fb;
+      color: #333;
+    }
+
+    .pill-reminder-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 300px;
+      margin: 2rem auto;
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .pill-reminder-form label {
+      font-weight: bold;
+    }
+
+    .pill-reminder-form input,
+    .pill-reminder-form select {
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    .pill-reminder-form button {
+      padding: 0.8rem;
+      font-size: 1rem;
+      font-weight: bold;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pill-reminder-form button:hover {
+      background: #0056b3;
+    }
+
+    /* Floating Plus Icon */
+    .floating-plus {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .floating-plus:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pill Reminder Form -->
+  <div id="pillReminderFormContainer">
+    <form class="pill-reminder-form">
+      <label for="medicineName">Medicine Name:</label>
+      <input type="text" id="medicineName" name="medicineName" required>
+
+      <label for="reminderTime">Reminder Time:</label>
+      <input type="time" id="reminderTime" name="reminderTime" required>
+
+      <label for="dosage">Dosage:</label>
+      <select id="dosage" name="dosage" required>
+        <option value="1">1 pill</option>
+        <option value="2">2 pills</option>
+        <option value="3">3 pills</option>
+      </select>
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+  <!-- Floating Plus Button -->
+  <button class="floating-plus" onclick="openPillReminderForm()">+</button>
+
+  <script>
+    // Open Pill Reminder Form
+    function openPillReminderForm() {
+      const formContainer = document.getElementById('pillReminderFormContainer');
+      formContainer.style.display = 'block';
+    }
+
+    // Save pill reminder (mock function)
+    document.querySelector('.pill-reminder-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const medicineName = document.getElementById('medicineName').value;
+      const reminderTime = document.getElementById('reminderTime').value;
+      const dosage = document.getElementById('dosage').value;
+
+      // Show confirmation message or save data
+      alert(`Reminder saved: ${medicineName}, Time: ${reminderTime}, Dosage: ${dosage}`);
+      
+      // Reset form and close it
+      document.querySelector('.pill-reminder-form').reset();
+      document.getElementById('pillReminderFormContainer').style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
